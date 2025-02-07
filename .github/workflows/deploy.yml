@@ -1,0 +1,17 @@
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+    - run: npm install
+    - run: npm run build
+    - uses: JamesIves/github-pages-deploy-action@4.1.4
+      with:
+        branch: gh-pages
+        folder: build
+name: Deploy Website
+'on':
+  push:
+    branches:
+    - main
